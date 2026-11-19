@@ -25,7 +25,9 @@ The palette comes from the nature/ocean theme, not from a default gradient set. 
 ## Dials
 - **ENERGY 1 (calm):** the scene is still; nothing shouts for attention.
 - **RHYTHM 1 (uniform):** one stage, one caption, one control.
-- **MOTION 1:** motion only as direct feedback to a tap or drag. No looping animation.
+- **MOTION 2 (balanced):** slow ambient motion makes the companion feel alive while studying beside the user. Purpose: breathing and blinking read as a living study partner, a gentle head sway and scene drift read as a sea breeze, and the wave is direct feedback to a tap. All loops are slow and stop under `prefers-reduced-motion`.
 
 ## Art
-Original SVG assets authored for this repo: `assets/theme-ocean-room.svg`, `assets/character-idle.svg`, `assets/character-happy.svg`. No art or code was copied from another app.
+- `assets/room.jpg`: original art generated with the free Pollinations.ai cloud API from a text prompt describing this exact room. No existing app's art was used.
+- Character art: inline layered SVG in `index.html`, so head, eyes, mouth and hand can animate independently. The standalone `character-idle.svg` and `character-happy.svg` remain as static references.
+No art or code was copied from another app.

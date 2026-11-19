@@ -1,6 +1,5 @@
 const stage = document.querySelector('.stage');
 const companion = document.getElementById('companion');
-const portrait = document.getElementById('companion-img');
 const speech = document.getElementById('speech');
 const reset = document.getElementById('reset');
 
@@ -8,9 +7,6 @@ const home = { x: 0.3, y: 0.62 };
 let position = { ...home };
 let drag = null;
 let reactionTimer = null;
-
-const happy = new Image();
-happy.src = 'assets/character-happy.svg';
 
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
@@ -39,13 +35,11 @@ function place() {
 
 function react() {
   clearTimeout(reactionTimer);
-  portrait.src = happy.src;
   speech.hidden = false;
-  companion.classList.add('react');
+  companion.classList.add('react', 'is-happy');
   reactionTimer = setTimeout(() => {
-    portrait.src = 'assets/character-idle.svg';
     speech.hidden = true;
-    companion.classList.remove('react');
+    companion.classList.remove('react', 'is-happy');
   }, 1400);
 }
 

@@ -58,6 +58,12 @@ main {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  animation: scene-drift 14s ease-in-out infinite;
+}
+
+@keyframes scene-drift {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.012); }
 }
 
 .companion {
@@ -88,12 +94,74 @@ main {
   transform: translate(-50%, -50%) scale(1.05) rotate(-2deg);
 }
 
-.companion img {
+.character {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  pointer-events: none;
+  overflow: visible;
+}
+
+.char-shadow { fill: #8a694e; opacity: 0.14; }
+
+.char-breathe {
+  transform-box: view-box;
+  transform-origin: 250px 470px;
+  animation: breathe 4.2s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.025); }
+}
+
+.char-head {
+  transform-box: view-box;
+  transform-origin: 250px 260px;
+  animation: head-sway 6.4s ease-in-out infinite;
+}
+
+@keyframes head-sway {
+  0%, 100% { transform: rotate(-1.2deg); }
+  50% { transform: rotate(1.4deg); }
+}
+
+.eyes, .mouth, .hand { transition: opacity 120ms ease; }
+
+.eyes-open {
+  transform-box: view-box;
+  transform-origin: 250px 200px;
+  animation: blink 5.4s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 91%, 100% { transform: scaleY(1); }
+  94% { transform: scaleY(0.08); }
+  97% { transform: scaleY(1); }
+}
+
+.eyes-happy, .mouth-happy, .hand-wave { opacity: 0; }
+
+.companion.is-happy .eyes-open,
+.companion.is-happy .mouth-normal,
+.companion.is-happy .hand-normal { opacity: 0; }
+
+.companion.is-happy .eyes-happy,
+.companion.is-happy .mouth-happy,
+.companion.is-happy .hand-wave { opacity: 1; }
+
+.hand-wave {
+  transform-box: view-box;
+  transform-origin: 324px 318px;
+}
+
+.companion.is-happy .hand-wave {
+  animation: wave 800ms ease-in-out 3;
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-14deg); }
+  75% { transform: rotate(10deg); }
 }
 
 .speech {
@@ -155,5 +223,7 @@ main {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .companion, .reset { transition: none; }
+  .companion, .reset, .eyes, .mouth, .hand { transition: none; }
+  .scene, .char-breathe, .char-head, .eyes-open,
+  .companion.is-happy .hand-wave { animation: none; }
 }
