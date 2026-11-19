@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A calm web prototype of the Youcan study companion in a nature and ocean themed room.">
+  <title>Youcan - Ocean Study Companion</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Youcan</h1>
+    <p>A quiet place to study by the sea.</p>
+  </header>
+
+  <main>
+    <section class="stage" aria-label="Ocean study room">
+      <img
+        class="scene"
+        src="assets/theme-ocean-room.svg"
+        alt="A calm study nook by the sea with an open window, a wooden desk, sea grass and a warm lamp"
+        width="1200" height="675" fetchpriority="high">
+
+      <button
+        id="companion"
+        class="companion"
+        type="button"
+        aria-label="Study companion. Activate to say hello, or drag to move.">
+        <img id="companion-img" src="assets/character-idle.svg" alt="" width="500" height="600">
+      </button>
+
+      <div id="speech" class="speech" role="status" hidden>Hello there.</div>
+    </section>
+
+    <p class="hint">Tap your companion to say hello. Drag to move them around the room.</p>
+    <button id="reset" class="reset" type="button">Move companion back</button>
+  </main>
+
+  <footer class="site-footer">
+    <p>Prototype scope: character and theme only.</p>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
